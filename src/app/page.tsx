@@ -54,7 +54,6 @@ const Dashboard = () => {
                     startIcon={<AddIcon />}
                     component={Link}
                     href="/employees/add"
-                    fullWidth={{ xs: true, sm: false }}
                     sx={{ width: { xs: '100%', sm: 'auto' } }}
                 >
                     Add Employee
