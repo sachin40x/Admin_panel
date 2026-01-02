@@ -64,26 +64,27 @@ const EmployeesPage = () => {
 
     return (
         <Box>
-            <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mb: 4 }}>
-                <Typography variant="h4" sx={{ fontWeight: 600 }}>Employees</Typography>
+            <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mb: 4, flexDirection: { xs: 'column', sm: 'row' }, gap: 2 }}>
+                <Typography variant="h4" sx={{ fontWeight: 600, fontSize: { xs: '1.5rem', sm: '2rem' } }}>Employees</Typography>
                 <Button
                     variant="contained"
                     startIcon={<AddIcon />}
                     component={Link}
                     href="/employees/add"
+                    sx={{ width: { xs: '100%', sm: 'auto' } }}
                 >
                     Add Employee
                 </Button>
             </Box>
 
-            <TableContainer component={Paper}>
+            <TableContainer component={Paper} sx={{ overflowX: 'auto' }}>
                 <Table sx={{ minWidth: 650 }}>
                     <TableHead sx={{ backgroundColor: '#f9f9f9' }}>
                         <TableRow>
                             <TableCell sx={{ fontWeight: 600 }}>Name</TableCell>
                             <TableCell sx={{ fontWeight: 600 }}>Email</TableCell>
-                            <TableCell sx={{ fontWeight: 600 }}>Department</TableCell>
-                            <TableCell sx={{ fontWeight: 600 }}>Salary</TableCell>
+                            <TableCell sx={{ fontWeight: 600, display: { xs: 'none', sm: 'table-cell' } }}>Department</TableCell>
+                            <TableCell sx={{ fontWeight: 600, display: { xs: 'none', md: 'table-cell' } }}>Salary</TableCell>
                             <TableCell align="right" sx={{ fontWeight: 600 }}>Actions</TableCell>
                         </TableRow>
                     </TableHead>
@@ -98,9 +99,9 @@ const EmployeesPage = () => {
                             employees.map((row) => (
                                 <TableRow key={row.id} sx={{ '&:hover': { backgroundColor: '#fafafa' } }}>
                                     <TableCell>{row.name}</TableCell>
-                                    <TableCell>{row.email}</TableCell>
-                                    <TableCell>{row.department}</TableCell>
-                                    <TableCell>₹{row.salary.toLocaleString('en-IN')}</TableCell>
+                                    <TableCell sx={{ fontSize: { xs: '0.875rem', sm: '1rem' } }}>{row.email}</TableCell>
+                                    <TableCell sx={{ display: { xs: 'none', sm: 'table-cell' } }}>{row.department}</TableCell>
+                                    <TableCell sx={{ display: { xs: 'none', md: 'table-cell' } }}>₹{row.salary.toLocaleString('en-IN')}</TableCell>
                                     <TableCell align="right">
                                         <Tooltip title="Edit">
                                             <IconButton component={Link} href={`/employees/edit/${row.id}`} size="small" sx={{ mr: 1 }}>

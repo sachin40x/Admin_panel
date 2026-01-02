@@ -47,13 +47,15 @@ const Dashboard = () => {
 
     return (
         <Box>
-            <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mb: 4 }}>
-                <Typography variant="h4" sx={{ fontWeight: 600 }}>Dashboard Overview</Typography>
+            <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mb: 4, flexDirection: { xs: 'column', sm: 'row' }, gap: 2 }}>
+                <Typography variant="h4" sx={{ fontWeight: 600, fontSize: { xs: '1.5rem', sm: '2rem' } }}>Dashboard Overview</Typography>
                 <Button
                     variant="contained"
                     startIcon={<AddIcon />}
                     component={Link}
                     href="/employees/add"
+                    fullWidth={{ xs: true, sm: false }}
+                    sx={{ width: { xs: '100%', sm: 'auto' } }}
                 >
                     Add Employee
                 </Button>
@@ -61,11 +63,11 @@ const Dashboard = () => {
 
             <Grid container spacing={3}>
                 {statCards.map((card, index) => (
-                    <Grid item xs={12} sm={4} key={index}>
+                    <Grid item xs={12} sm={6} md={4} key={index}>
                         <Paper sx={{ p: 3, display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
                             <Box>
                                 <Typography variant="body2" color="textSecondary" sx={{ mb: 1 }}>{card.title}</Typography>
-                                <Typography variant="h4" sx={{ fontWeight: 700 }}>{card.value}</Typography>
+                                <Typography variant="h4" sx={{ fontWeight: 700, fontSize: { xs: '1.5rem', sm: '2rem' } }}>{card.value}</Typography>
                             </Box>
                             <Box sx={{ backgroundColor: '#f5f5f5', p: 1.5, borderRadius: 2 }}>
                                 {card.icon}
